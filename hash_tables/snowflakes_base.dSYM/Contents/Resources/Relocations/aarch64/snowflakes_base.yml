@@ -1,0 +1,8 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/michaellee/Documents/algo_c/hash_tables/snowflakes_base'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _identify_identical, symObjAddr: 0x0, symBinAddr: 0x100003DFC, symSize: 0xD8 }
+  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _identify_identical, symObjAddr: 0x0, symBinAddr: 0x100003DFC, symSize: 0xD8 }
+  - { offsetInCU: 0x8F, offset: 0x8F, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0xD8, symBinAddr: 0x100003ED4, symSize: 0x78 }
+...
