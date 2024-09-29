@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#define SIZE 100000
+}
+
+typedef struct snowflake_node {
+    int snowflake[6];
+    struct snowflake_node *next;
+} snowflake_node;
 int identical_right(int snow1[], int snow2[], int start)
 {
     int offset;
@@ -36,33 +43,47 @@ int are_identical(int snow1[], int snow2[])
     return 0;
 }
 
-void identify_identical(int snowflakes[][6], int n) {
-    int i, j;
-    for (i = 0; i < n; i++) {
-        for (j = i + 1; j < n; j++) {
-            if (are_identical(snowflakes[i], snowflakes[j])) {
-                printf("%d and %d are identical\n", i + 1, j + 1);
-                return;
+void identify_identical(snowflake_node *snowflakes[]) {
+    snowflake_node *node1, *node2;
+    int i;
+    for (i=0;i<SIZE;i++) {
+        node1 = snowflakes[i];
+        while (node1 != NULL) {
+            node2 = node1->next;
+            while (node2 != NULL) {
+                if (are_identical(node1->snowflake, node2->snowflake)) {
+                    printf("Twin snowflakes found.\n");
+                    return;
+                }
+                node2 = node2->next;
             }
+            node1 = node1->next;
         }
     }
     printf("No two snowflakes are identical\n");
 }
 
-
-
-#define SIZE 100000
-
 int code(int snowflake[]) {
     return (snowflake[0] + snowflake[1] * 10 + snowflake[2] * 100 + snowflake[3] * 1000 + snowflake[4] * 10000 + snowflake[5]) % SIZE;
-}
+
+
 int main(void) {
-    static int snowflakes[SIZE][6];
-    int n, i, j;
+    static snowflake_node *snowflakes[SIZE] = {NULL};
+    snowflake_node *snow;
+    int n, i, j, snowflake_code;
     scanf("%d", &n);
-    for (i = 0; i < n; i++)
+    for (i = 0; i < n; i++) {
+        snow = malloc(sizeof(snowflake_node));
+        if (snow == NULL) {
+            fprintf(stderr, "malloc failed\n");
+            exit(1);
+        }
         for (j = 0; j < 6; j++)
-            scanf("%d", &snowflakes[i][j]);
-    identify_identical(snowflakes, n);
+            scanf("%d", &snow->snowflake[j]);
+        snowflake_code = code(snow->snowflake);
+        snow->next = snowflakes[snowflake_code];
+        snowflakes[snowflake_code] = snow;
+    }
+    identify_identical(snowflakes);
     return 0;
 }
