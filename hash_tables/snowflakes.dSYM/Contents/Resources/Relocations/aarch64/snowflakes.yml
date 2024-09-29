@@ -1,10 +1,5 @@
 ---
 triple:          'arm64-apple-darwin'
 binary-path:     '/Users/michaellee/Documents/algo_c/hash_tables/snowflakes'
-relocations:
-  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _identical_right, symObjAddr: 0x0, symBinAddr: 0x100003C70, symSize: 0xA0 }
-  - { offsetInCU: 0x41, offset: 0x41, size: 0x8, addend: 0x0, symName: _identical_right, symObjAddr: 0x0, symBinAddr: 0x100003C70, symSize: 0xA0 }
-  - { offsetInCU: 0x93, offset: 0x93, size: 0x8, addend: 0x0, symName: _identical_left, symObjAddr: 0xA0, symBinAddr: 0x100003D10, symSize: 0xBC }
-  - { offsetInCU: 0xF3, offset: 0xF3, size: 0x8, addend: 0x0, symName: _are_identical, symObjAddr: 0x15C, symBinAddr: 0x100003DCC, symSize: 0xB4 }
-  - { offsetInCU: 0x137, offset: 0x137, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x210, symBinAddr: 0x100003E80, symSize: 0xC8 }
+relocations:     []
 ...

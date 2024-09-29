@@ -36,14 +36,33 @@ int are_identical(int snow1[], int snow2[])
     return 0;
 }
 
+void identify_identical(int snowflakes[][6], int n) {
+    int i, j;
+    for (i = 0; i < n; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (are_identical(snowflakes[i], snowflakes[j])) {
+                printf("%d and %d are identical\n", i + 1, j + 1);
+                return;
+            }
+        }
+    }
+    printf("No two snowflakes are identical\n");
+}
+
+
+
+#define SIZE 100000
+
+int code(int snowflake[]) {
+    return (snowflake[0] + snowflake[1] * 10 + snowflake[2] * 100 + snowflake[3] * 1000 + snowflake[4] * 10000 + snowflake[5]) % SIZE;
+}
 int main(void) {
-    int s1[] = {1, 2, 3, 4, 5, 6};
-    int s2[] = {3, 2, 1, 6, 5, 4};
-    int answer;
-    answer = are_identical(s1, s2);
-    if (answer == 1)
-        puts("Yes");
-    else
-        puts("No");
+    static int snowflakes[SIZE][6];
+    int n, i, j;
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+        for (j = 0; j < 6; j++)
+            scanf("%d", &snowflakes[i][j]);
+    identify_identical(snowflakes, n);
     return 0;
 }
