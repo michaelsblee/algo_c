@@ -2,12 +2,13 @@
 #include <stdarg.h>
 
 #define SIZE 100000
-}
+
 
 typedef struct snowflake_node {
     int snowflake[6];
     struct snowflake_node *next;
 } snowflake_node;
+
 int identical_right(int snow1[], int snow2[], int start)
 {
     int offset;
@@ -65,7 +66,7 @@ void identify_identical(snowflake_node *snowflakes[]) {
 
 int code(int snowflake[]) {
     return (snowflake[0] + snowflake[1] * 10 + snowflake[2] * 100 + snowflake[3] * 1000 + snowflake[4] * 10000 + snowflake[5]) % SIZE;
-
+}
 
 int main(void) {
     static snowflake_node *snowflakes[SIZE] = {NULL};
