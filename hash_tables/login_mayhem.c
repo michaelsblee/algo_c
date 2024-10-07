@@ -97,7 +97,7 @@ int main(void) { //bugged!
       if (!password_ptr)
         printf("0\n");
       else
-      printf("%d\n" password_ptr->total);
+      printf("%d\n", password_ptr->total);
     }
   }
   /*
