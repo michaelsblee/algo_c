@@ -1,1 +1,7 @@
-{}
+{
+    "files.associations": {
+        "random": "c",
+        "limits": "c",
+        "algorithm": "c"
+    }
+}
