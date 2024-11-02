@@ -25,12 +25,24 @@ int solve(char outcome1[], char outcome2[],
         1 for Heroes, 2 for Villains, i and j number of Heroes/Villains games being considered for this subproblem
         */
 {
-int first, second, third, fourth;
+    int first, second, third, fourth;
 
-if (i==0 || j==0)
-    return 0;
+    if (i==0 || j==0)
+        return 0;
 
-//TODO OPTIONS
-
-return(0);
+    //TODO OPTIONS
+    // option 1
+    if ((outcome1[i]=='W' && outcome2[j]=='L' &&
+         goals1[i]>goals2[j]) || // heroes win
+        (outcome1[i]=='L' && outcome2[j]=='W' &&
+         goals1[i]<goals2[j])) // heroes win
+         // SO IF E RIVALRY GAME IN LAST GAME
+            first=solve(outcome1, outcome2, goals1, goals2, i-1, j-1) + goals1[i] + goals2[j];
+    else
+        first=0;
+    second=solve(outcome1,outcome2,goals1,goals2,i-1,j-1); // option 2, when last games for both teams don't matter
+    third=solve(outcome1,outcome2,goals1,goals2, i-1, j); // option, when last game for Heroes doesn't matter
+    fourth=solve(outcome1,outcome2,goals1,goals2, i, j-1);
+    return max(first, max(second, max(third,fourth)));
+    
 }
