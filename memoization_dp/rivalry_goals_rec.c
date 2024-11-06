@@ -30,8 +30,7 @@ int solve(char outcome1[], char outcome2[],
     if (i==0 || j==0)
         return 0;
 
-    //TODO OPTIONS
-    // option 1
+    // options
     if ((outcome1[i]=='W' && outcome2[j]=='L' &&
          goals1[i]>goals2[j]) || // heroes win
         (outcome1[i]=='L' && outcome2[j]=='W' &&
@@ -44,5 +43,25 @@ int solve(char outcome1[], char outcome2[],
     third=solve(outcome1,outcome2,goals1,goals2, i-1, j); // option, when last game for Heroes doesn't matter
     fourth=solve(outcome1,outcome2,goals1,goals2, i, j-1);
     return max(first, max(second, max(third,fourth)));
-    
+
+}
+
+#define SIZE 1000
+
+int main(void) {
+    int i, n, result;
+    char outcome1[SIZE + 1], outcome2[SIZE + 1];
+    int goals1[SIZE + 1], goals2[SIZE + 1];
+    scanf("%d ", &n);
+    for (i=1;i<=n;i++)
+        scanf("%c", &outcome1[i]);
+    for (i=1;i<=n;i++)
+        scanf("%d ", &goals1[i]);
+    for (i=1;i<=n;i++)
+        scanf("%c", &outcome2[i]);
+    for (i=1;i<=n;i++)
+        scanf("%d", &goals2[i]);
+    result = solve(outcome1, outcome2, goals1, goals2, n, n);
+    printf("%d\n", result);
+    return 0;
 }
